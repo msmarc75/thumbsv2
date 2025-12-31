@@ -62,5 +62,9 @@ def generate():
     except Exception as e:
         return f"Une erreur est survenue: {e}", 500
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+import os
+
+if __name__ == "__main__":
+    # Render définit une variable d'environnement PORT, on l'utilise par défaut
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
